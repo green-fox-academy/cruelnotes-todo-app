@@ -19,12 +19,12 @@ public class AddNewTask {
     }
 
     public void writeLine(String task) {
-        Path fileSource = Paths.get("src/my-todo-log.txt");
+        try {
+        Path fileSource = Paths.get("C:/Users/CruelNotes/DesktopGreenFox/cruelnotes-todo-app/src/my-todo-log.txt");
 
         List<String> content = new ArrayList();
         content.add(task);
 
-        try {
             Files.write(fileSource, content, StandardOpenOption.APPEND);
         } catch (IOException e) {
             //    System.out.println("Unable to read file: my-file.txt");
