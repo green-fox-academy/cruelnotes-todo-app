@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,19 +20,25 @@ public class ListTasks {
     }
  //   Path fileSource = Paths.get("src/my-file.txt");
 
-    public void printList() {
+    public void printList() throws IOException {
         Path fileSource = Paths.get(logPath);
-        int i = 1;
-        List<String> lines = null;
-          try {
-            lines = Files.readAllLines(fileSource);
+        FileReader fReader = new FileReader(logPath);
+        if (fReader.read() == -1) {
+            System.out.println("No todos for today! :)");
+        } else {
+            int i = 1;
+            List<String> lines = null;
+              try {
+                lines = Files.readAllLines(fileSource);
 
-        } catch (IOException e) {
-            System.out.println("Unable to read file: my-todo-log.txt");
-        }
-          for (String line: lines) {
-            System.out.println(i + " - " + line);
-            i++;
+            } catch (IOException e) {
+                System.out.println("Unable to read file: my-todo-log.txt");
+            }
+              for (String line: lines) {
+                System.out.println(i + " - " + line);
+                i++;
+            }
         }
     }
 }
+
