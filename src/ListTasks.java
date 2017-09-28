@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -34,7 +33,14 @@ public class ListTasks {
             } catch (IOException e) {
                 System.out.println("Unable to read file: my-todo-log.txt");
             }
-              for (String line: lines) {
+
+//            for (String line: lines) {
+//                if (!"".equals(line.trim())) {
+//                    System.out.println(line);
+//                }
+//            }
+
+            for (String line: lines) {
                 System.out.println(i + " - " + line);
                 i++;
             }
